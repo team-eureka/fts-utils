@@ -1,0 +1,18 @@
+#!/bin/sh
+
+case "$1" in
+	normal)
+		BOOT_COMMAND=''
+		;;
+	recovery)
+		BOOT_COMMAND='boot-recovery'
+		;;
+	backupsys)
+		BOOT_COMMAND='boot-backupsys'
+		;;
+	*)
+		echo "Usage: ${0} normal|recovery|backupsys"
+		exit 1
+esac
+
+fts-set 'bootloader.command' "$BOOT_COMMAND"
